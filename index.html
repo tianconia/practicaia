@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORTEX | Marketing Conductual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'cortex-black': '#0a0a0a',
+                        'cortex-gray': '#1c1c1c',
+                        'cortex-gold': '#D4AF37', // Un toque sutil de lujo
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f3f4f6;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-cortex-black/80 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-widest uppercase flex items-center gap-2">
+                <div class="w-3 h-3 bg-cortex-gold rounded-full"></div>
+                Cortex
+            </a>
+            <div class="hidden md:flex space-x-12 text-sm font-semibold tracking-wide text-gray-400">
+                <a href="#methodology" class="hover:text-white transition-colors">CIENCIA</a>
+                <a href="#services" class="hover:text-white transition-colors">SOLUCIONES</a>
+                <a href="#expertise" class="hover:text-white transition-colors">EXPERIENCIA</a>
+                <a href="#contact" class="hover:text-white transition-colors">CONSULTORÍA</a>
+            </div>
+            <button class="md:hidden text-white">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Abstract Background Image -->
+        <div class="absolute inset-0 z-0 opacity-40">
+             <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" alt="Abstract Data" class="w-full h-full object-cover grayscale">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-cortex-black via-cortex-black/50 to-transparent z-10"></div>
+        
+        <div class="relative z-20 text-center px-4 max-w-5xl mx-auto mt-16">
+            <p class="text-cortex-gold font-mono text-sm tracking-[0.3em] mb-6 reveal">NEUROMARKETING & ANÁLISIS PREDICTIVO</p>
+            <h1 class="text-5xl md:text-8xl font-serif italic mb-6 leading-tight reveal" style="transition-delay: 200ms;">
+                Decodificamos <br>
+                <span class="font-sans font-bold not-italic text-white">La Mente Humana</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light reveal" style="transition-delay: 400ms;">
+                Transformamos sesgos cognitivos en estrategias de mercado. No adivinamos lo que el cliente quiere; sabemos cómo piensa.
+            </p>
+            <div class="reveal" style="transition-delay: 600ms;">
+                <a href="#contact" class="inline-block border border-white/20 hover:bg-white hover:text-black hover:border-white px-8 py-4 text-sm tracking-widest transition-all duration-300 uppercase">
+                    Iniciar Análisis
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Methodology / Philosophy -->
+    <section id="methodology" class="py-24 bg-cortex-black relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8">Más allá del <span class="font-serif italic text-gray-500">Big Data</span>.</h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <i data-lucide="brain-circuit" class="w-8 h-8 text-cortex-gold mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Psicología del Comportamiento</h3>
+                                <p class="text-gray-400 font-light">Utilizamos modelos de economía conductual para predecir decisiones de compra antes de que sucedan.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i data-lucide="scan-eye" class="w-8 h-8 text-cortex-gold mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Arquitectura de Decisión</h3>
+                                <p class="text-gray-400 font-light">Diseñamos entornos digitales que guían sutilmente al usuario hacia la conversión mediante "nudges" estratégicos.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i data-lucide="activity" class="w-8 h-8 text-cortex-gold mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Validación Biométrica</h3>
+                                <p class="text-gray-400 font-light">No confiamos en lo que dicen los focus groups. Medimos la respuesta emocional real.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative reveal h-[500px]">
+                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=1974&auto=format&fit=crop" alt="Analysis" class="w-full h-full object-cover opacity-80 filter grayscale hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute bottom-0 left-0 bg-white text-black p-6 max-w-xs">
+                        <p class="font-mono text-xs mb-2">ESTUDIO DE CASO 2025</p>
+                        <p class="font-bold text-lg">Incremento del 240% en retención para firma Fortune 500.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="py-24 bg-cortex-gray border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div>
+                    <span class="text-cortex-gold font-mono text-sm tracking-widest">NUESTRA EXPERIENCIA</span>
+                    <h2 class="text-4xl mt-4 font-serif italic">Servicios de Alto Impacto</h2>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-2 text-sm uppercase tracking-widest hover:text-cortex-gold transition-colors mt-6 md:mt-0">
+                    Ver Portafolio Completo <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-1 border-t border-white/10">
+                <!-- Service 1 -->
+                <div class="group p-8 border-r border-b border-white/10 hover:bg-white hover:text-black transition-all duration-500 cursor-pointer reveal">
+                    <span class="font-mono text-xs opacity-50 mb-12 block">01</span>
+                    <h3 class="text-2xl font-bold mb-4">Auditoría Neuro-UX</h3>
+                    <p class="text-sm opacity-70 mb-8 font-light leading-relaxed group-hover:opacity-100">
+                        Análisis profundo de la interfaz de usuario basado en la carga cognitiva y la fluidez de procesamiento.
+                    </p>
+                    <i data-lucide="arrow-up-right" class="w-6 h-6 opacity-50 group-hover:opacity-100"></i>
+                </div>
+                <!-- Service 2 -->
+                <div class="group p-8 border-r border-b border-white/10 hover:bg-white hover:text-black transition-all duration-500 cursor-pointer reveal" style="transition-delay: 100ms;">
+                    <span class="font-mono text-xs opacity-50 mb-12 block">02</span>
+                    <h3 class="text-2xl font-bold mb-4">Branding Emocional</h3>
+                    <p class="text-sm opacity-70 mb-8 font-light leading-relaxed group-hover:opacity-100">
+                        Construcción de narrativas de marca que activan los marcadores somáticos del consumidor.
+                    </p>
+                    <i data-lucide="arrow-up-right" class="w-6 h-6 opacity-50 group-hover:opacity-100"></i>
+                </div>
+                <!-- Service 3 -->
+                <div class="group p-8 border-b border-white/10 hover:bg-white hover:text-black transition-all duration-500 cursor-pointer reveal" style="transition-delay: 200ms;">
+                    <span class="font-mono text-xs opacity-50 mb-12 block">03</span>
+                    <h3 class="text-2xl font-bold mb-4">Estrategia de Precios</h3>
+                    <p class="text-sm opacity-70 mb-8 font-light leading-relaxed group-hover:opacity-100">
+                        Optimización de pricing basada en el valor percibido y anclajes psicológicos.
+                    </p>
+                    <i data-lucide="arrow-up-right" class="w-6 h-6 opacity-50 group-hover:opacity-100"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats / Authority -->
+    <section id="expertise" class="py-20 bg-cortex-black">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div class="reveal">
+                    <div class="text-4xl md:text-5xl font-serif italic mb-2 text-white">12+</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500">Años de Investigación</div>
+                </div>
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <div class="text-4xl md:text-5xl font-serif italic mb-2 text-white">50M+</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500">Data Points Analizados</div>
+                </div>
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <div class="text-4xl md:text-5xl font-serif italic mb-2 text-white">ROI</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500">Enfoque Principal</div>
+                </div>
+                <div class="reveal" style="transition-delay: 300ms;">
+                    <div class="text-4xl md:text-5xl font-serif italic mb-2 text-white">PhD</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500">Nivel del Equipo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white text-black relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-5xl md:text-6xl font-serif mb-6">Inicie la Conversación</h2>
+                <p class="text-gray-600 text-lg">Solo aceptamos 5 nuevos clientes por trimestre para garantizar la excelencia.</p>
+            </div>
+
+            <form class="space-y-8 reveal">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="relative">
+                        <input type="text" id="name" class="peer w-full border-b border-gray-300 py-4 focus:outline-none focus:border-black transition-colors bg-transparent placeholder-transparent" placeholder="Nombre">
+                        <label for="name" class="absolute left-0 top-4 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black">Nombre Completo</label>
+                    </div>
+                    <div class="relative">
+                        <input type="email" id="email" class="peer w-full border-b border-gray-300 py-4 focus:outline-none focus:border-black transition-colors bg-transparent placeholder-transparent" placeholder="Email">
+                        <label for="email" class="absolute left-0 top-4 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black">Correo Corporativo</label>
+                    </div>
+                </div>
+                
+                <div class="relative pt-4">
+                    <input type="text" id="company" class="peer w-full border-b border-gray-300 py-4 focus:outline-none focus:border-black transition-colors bg-transparent placeholder-transparent" placeholder="Empresa">
+                    <label for="company" class="absolute left-0 top-8 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-8 peer-focus:top-2 peer-focus:text-xs peer-focus:text-black">Empresa / Sitio Web</label>
+                </div>
+
+                <div class="relative pt-8">
+                    <textarea id="message" rows="3" class="peer w-full border-b border-gray-300 py-4 focus:outline-none focus:border-black transition-colors bg-transparent placeholder-transparent" placeholder="Mensaje"></textarea>
+                    <label for="message" class="absolute left-0 top-12 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-12 peer-focus:top-6 peer-focus:text-xs peer-focus:text-black">Desafío Actual de Mercado</label>
+                </div>
+
+                <div class="pt-8 text-center">
+                    <button type="button" class="bg-black text-white px-12 py-4 uppercase tracking-widest text-sm hover:bg-cortex-gray transition-colors w-full md:w-auto">
+                        Solicitar Acceso
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-cortex-black text-white py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center opacity-50">
+            <div class="flex items-center gap-2 mb-4 md:mb-0">
+                <div class="w-2 h-2 bg-white rounded-full"></div>
+                <span class="text-sm font-mono uppercase tracking-widest">Cortex Agency</span>
+            </div>
+            <div class="text-xs font-light">
+                &copy; 2024 CORTEX. Todos los derechos reservados. Ciudad de México - New York - London.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Icon Initialization
+        lucide.createIcons();
+
+        // Scroll Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+</html>
