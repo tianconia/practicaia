@@ -125,22 +125,17 @@
         <!-- Weekly Plan -->
         <section>
             <h3 class="font-serif text-2xl text-blush-800 mb-6 flex items-center gap-2">
-                <i data-lucide="calendar-heart" class="w-5 h-5 text-blush-500"></i>
-                Menú Semanal
+                <i data-lucide="book-open" class="w-5 h-5 text-blush-500"></i>
+                Opciones de Menú
             </h3>
 
             <!-- Tabs Navigation -->
             <div class="flex overflow-x-auto border-b border-gray-200 mb-8 pb-px no-scrollbar">
-                <button onclick="showDay('lunes')" id="tab-lunes" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Lunes</button>
-                <button onclick="showDay('martes')" id="tab-martes" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Martes</button>
-                <button onclick="showDay('miercoles')" id="tab-miercoles" class="tab-btn tab-active px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Miércoles</button>
-                <button onclick="showDay('jueves')" id="tab-jueves" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Jueves</button>
-                <button onclick="showDay('viernes')" id="tab-viernes" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Viernes</button>
-                <button onclick="showDay('sabado')" id="tab-sabado" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Sábado</button>
-                <button onclick="showDay('domingo')" id="tab-domingo" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Domingo</button>
+                <button onclick="showMenu('menu1')" id="tab-menu1" class="tab-btn tab-active px-8 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Menú 1</button>
+                <button onclick="showMenu('menu2')" id="tab-menu2" class="tab-btn tab-inactive px-8 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Menú 2</button>
             </div>
 
-            <!-- Content Area for Days -->
+            <!-- Content Area for Menus -->
             <div id="meals-container" class="space-y-6">
                 <!-- Rendered via JavaScript -->
             </div>
@@ -159,9 +154,9 @@
     <script>
         lucide.createIcons();
 
+        // Hemos renombrado los datos para Menú 1 y Menú 2
         const dietData = {
-            lunes: [],
-            martes: [
+            menu1: [
                 {
                     tipo: "Desayuno",
                     platillo: "Omelet de claras con Brócoli y Papa",
@@ -221,7 +216,7 @@
                     ]
                 }
             ],
-            miercoles: [
+            menu2: [
                 {
                     tipo: "Desayuno",
                     platillo: "Papas con Huevo y Brócoli",
@@ -279,19 +274,15 @@
                         { alimento: "Aceite de oliva y limón", cantidad: "1 cdta" }
                     ]
                 }
-            ],
-            jueves: [],
-            viernes: [],
-            sabado: [],
-            domingo: []
+            ]
         };
 
-        function showDay(dayKey) {
+        function showMenu(menuKey) {
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('tab-active');
                 btn.classList.add('tab-inactive');
             });
-            const activeTab = document.getElementById(`tab-${dayKey}`);
+            const activeTab = document.getElementById(`tab-${menuKey}`);
             if (activeTab) {
                 activeTab.classList.add('tab-active');
                 activeTab.classList.remove('tab-inactive');
@@ -300,13 +291,13 @@
             const container = document.getElementById('meals-container');
             container.innerHTML = '';
 
-            const meals = dietData[dayKey];
+            const meals = dietData[menuKey];
             
             if (!meals || meals.length === 0) {
                 container.innerHTML = `
                     <div class="text-center py-20 bg-white rounded-2xl border border-dashed border-gray-200">
                         <i data-lucide="utensils" class="w-12 h-12 text-gray-200 mx-auto mb-4"></i>
-                        <p class="text-gray-400 font-serif text-lg">Información pendiente para este día</p>
+                        <p class="text-gray-400 font-serif text-lg">Información pendiente</p>
                     </div>
                 `;
                 lucide.createIcons();
@@ -341,8 +332,8 @@
             lucide.createIcons();
         }
 
-        // Initialize with Miercoles
-        showDay('miercoles');
+        // Inicializamos con Menú 1
+        showMenu('menu1');
     </script>
 </body>
 </html>
