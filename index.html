@@ -1,289 +1,348 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORTEX | Marketing Conductual</title>
+    <title>Plan Nutricional - Ingrid Jaqueline Valdez Aguilar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Manrope', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
                     colors: {
-                        'cortex-black': '#0a0a0a',
-                        'cortex-gray': '#1c1c1c',
-                        'cortex-gold': '#D4AF37', // Un toque sutil de lujo
+                        blush: {
+                            50: '#fdf8f8',
+                            100: '#f9ebeb',
+                            200: '#f2d5d5',
+                            300: '#e8baba',
+                            400: '#d99696',
+                            500: '#c67373',
+                            600: '#ab5555',
+                            700: '#8f4646',
+                            800: '#773d3d',
+                            900: '#643636',
+                        },
+                        sage: {
+                            50: '#f4f7f4',
+                            500: '#739072',
+                            700: '#4a5d49',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            background-color: #0a0a0a;
-            color: #f3f4f6;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease-out;
+        .tab-active {
+            border-bottom: 2px solid #ab5555;
+            color: #8f4646;
+            font-weight: bold;
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .tab-inactive {
+            color: #9ca3af;
         }
-        .text-gradient {
-            background: linear-gradient(to right, #ffffff, #9ca3af);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .tab-inactive:hover {
+            color: #ab5555;
         }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-[#FFFBFB] text-gray-800 font-sans antialiased">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-cortex-black/80 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold tracking-widest uppercase flex items-center gap-2">
-                <div class="w-3 h-3 bg-cortex-gold rounded-full"></div>
-                Cortex
-            </a>
-            <div class="hidden md:flex space-x-12 text-sm font-semibold tracking-wide text-gray-400">
-                <a href="#methodology" class="hover:text-white transition-colors">CIENCIA</a>
-                <a href="#services" class="hover:text-white transition-colors">SOLUCIONES</a>
-                <a href="#expertise" class="hover:text-white transition-colors">EXPERIENCIA</a>
-                <a href="#contact" class="hover:text-white transition-colors">CONSULTORÍA</a>
+    <!-- Header -->
+    <header class="bg-blush-50 shadow-sm border-b border-blush-100 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="leaf" class="text-sage-500 w-6 h-6"></i>
+                <h1 class="font-serif text-2xl font-semibold text-blush-800 tracking-wide">NutriBalance</h1>
             </div>
-            <button class="md:hidden text-white">
-                <i data-lucide="menu"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Abstract Background Image -->
-        <div class="absolute inset-0 z-0 opacity-40">
-             <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" alt="Abstract Data" class="w-full h-full object-cover grayscale">
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-cortex-black via-cortex-black/50 to-transparent z-10"></div>
-        
-        <div class="relative z-20 text-center px-4 max-w-5xl mx-auto mt-16">
-            <p class="text-cortex-gold font-mono text-sm tracking-[0.3em] mb-6 reveal">NEUROMARKETING & ANÁLISIS PREDICTIVO</p>
-            <h1 class="text-5xl md:text-8xl font-serif italic mb-6 leading-tight reveal" style="transition-delay: 200ms;">
-                Decodificamos <br>
-                <span class="font-sans font-bold not-italic text-white">La Mente Humana</span>
-            </h1>
-            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light reveal" style="transition-delay: 400ms;">
-                Transformamos sesgos cognitivos en estrategias de mercado. No adivinamos lo que el cliente quiere; sabemos cómo piensa.
-            </p>
-            <div class="reveal" style="transition-delay: 600ms;">
-                <a href="#contact" class="inline-block border border-white/20 hover:bg-white hover:text-black hover:border-white px-8 py-4 text-sm tracking-widest transition-all duration-300 uppercase">
-                    Iniciar Análisis
-                </a>
+            <div class="text-sm text-blush-600 italic font-serif text-right">
+                Por Ingrid Jaqueline Valdez Aguilar
             </div>
         </div>
     </header>
 
-    <!-- Methodology / Philosophy -->
-    <section id="methodology" class="py-24 bg-cortex-black relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-8">Más allá del <span class="font-serif italic text-gray-500">Big Data</span>.</h2>
-                    <div class="space-y-8">
-                        <div class="flex gap-4">
-                            <i data-lucide="brain-circuit" class="w-8 h-8 text-cortex-gold mt-1"></i>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">Psicología del Comportamiento</h3>
-                                <p class="text-gray-400 font-light">Utilizamos modelos de economía conductual para predecir decisiones de compra antes de que sucedan.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <i data-lucide="scan-eye" class="w-8 h-8 text-cortex-gold mt-1"></i>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">Arquitectura de Decisión</h3>
-                                <p class="text-gray-400 font-light">Diseñamos entornos digitales que guían sutilmente al usuario hacia la conversión mediante "nudges" estratégicos.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <i data-lucide="activity" class="w-8 h-8 text-cortex-gold mt-1"></i>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">Validación Biométrica</h3>
-                                <p class="text-gray-400 font-light">No confiamos en lo que dicen los focus groups. Medimos la respuesta emocional real.</p>
-                            </div>
-                        </div>
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <!-- Welcome Section -->
+        <section class="text-center mb-12">
+            <h2 class="font-serif text-4xl md:text-5xl text-blush-900 mb-4">Tu Plan de Alimentación</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto text-lg">Un camino delicioso y balanceado hacia tu bienestar.</p>
+        </section>
+
+        <!-- Macros Summary -->
+        <section class="mb-14">
+            <h3 class="font-serif text-2xl text-blush-800 mb-6 flex items-center gap-2">
+                <i data-lucide="pie-chart" class="w-5 h-5 text-blush-500"></i>
+                Resumen Nutricional (1568.10 Kcal)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Proteína -->
+                <div class="glass-card p-6 rounded-2xl shadow-sm text-center transform transition duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-full bg-blush-100 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="beef" class="w-6 h-6 text-blush-600"></i>
                     </div>
+                    <h4 class="font-bold text-gray-700 uppercase tracking-wider text-sm mb-1">Proteínas</h4>
+                    <p class="text-3xl font-serif text-blush-700">25%</p>
+                    <p class="text-sm text-gray-500 mt-1">98.01 g | 392.03 Kcal</p>
+                    <p class="text-xs text-blush-400 font-bold">1.56 g/kg peso</p>
                 </div>
-                <div class="relative reveal h-[500px]">
-                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=1974&auto=format&fit=crop" alt="Analysis" class="w-full h-full object-cover opacity-80 filter grayscale hover:grayscale-0 transition-all duration-700">
-                    <div class="absolute bottom-0 left-0 bg-white text-black p-6 max-w-xs">
-                        <p class="font-mono text-xs mb-2">ESTUDIO DE CASO 2025</p>
-                        <p class="font-bold text-lg">Incremento del 240% en retención para firma Fortune 500.</p>
+                <!-- Lípidos -->
+                <div class="glass-card p-6 rounded-2xl shadow-sm text-center transform transition duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-full bg-sage-50 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="droplet" class="w-6 h-6 text-sage-500"></i>
                     </div>
+                    <h4 class="font-bold text-gray-700 uppercase tracking-wider text-sm mb-1">Lípidos</h4>
+                    <p class="text-3xl font-serif text-sage-700">25%</p>
+                    <p class="text-sm text-gray-500 mt-1">43.56 g | 392.03 Kcal</p>
+                    <p class="text-xs text-sage-500 font-bold">0.69 g/kg peso</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Grid -->
-    <section id="services" class="py-24 bg-cortex-gray border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
-                <div>
-                    <span class="text-cortex-gold font-mono text-sm tracking-widest">NUESTRA EXPERIENCIA</span>
-                    <h2 class="text-4xl mt-4 font-serif italic">Servicios de Alto Impacto</h2>
-                </div>
-                <a href="#" class="hidden md:flex items-center gap-2 text-sm uppercase tracking-widest hover:text-cortex-gold transition-colors mt-6 md:mt-0">
-                    Ver Portafolio Completo <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-1 border-t border-white/10">
-                <!-- Service 1 -->
-                <div class="group p-8 border-r border-b border-white/10 hover:bg-white hover:text-black transition-all duration-500 cursor-pointer reveal">
-                    <span class="font-mono text-xs opacity-50 mb-12 block">01</span>
-                    <h3 class="text-2xl font-bold mb-4">Auditoría Neuro-UX</h3>
-                    <p class="text-sm opacity-70 mb-8 font-light leading-relaxed group-hover:opacity-100">
-                        Análisis profundo de la interfaz de usuario basado en la carga cognitiva y la fluidez de procesamiento.
-                    </p>
-                    <i data-lucide="arrow-up-right" class="w-6 h-6 opacity-50 group-hover:opacity-100"></i>
-                </div>
-                <!-- Service 2 -->
-                <div class="group p-8 border-r border-b border-white/10 hover:bg-white hover:text-black transition-all duration-500 cursor-pointer reveal" style="transition-delay: 100ms;">
-                    <span class="font-mono text-xs opacity-50 mb-12 block">02</span>
-                    <h3 class="text-2xl font-bold mb-4">Branding Emocional</h3>
-                    <p class="text-sm opacity-70 mb-8 font-light leading-relaxed group-hover:opacity-100">
-                        Construcción de narrativas de marca que activan los marcadores somáticos del consumidor.
-                    </p>
-                    <i data-lucide="arrow-up-right" class="w-6 h-6 opacity-50 group-hover:opacity-100"></i>
-                </div>
-                <!-- Service 3 -->
-                <div class="group p-8 border-b border-white/10 hover:bg-white hover:text-black transition-all duration-500 cursor-pointer reveal" style="transition-delay: 200ms;">
-                    <span class="font-mono text-xs opacity-50 mb-12 block">03</span>
-                    <h3 class="text-2xl font-bold mb-4">Estrategia de Precios</h3>
-                    <p class="text-sm opacity-70 mb-8 font-light leading-relaxed group-hover:opacity-100">
-                        Optimización de pricing basada en el valor percibido y anclajes psicológicos.
-                    </p>
-                    <i data-lucide="arrow-up-right" class="w-6 h-6 opacity-50 group-hover:opacity-100"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats / Authority -->
-    <section id="expertise" class="py-20 bg-cortex-black">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-                <div class="reveal">
-                    <div class="text-4xl md:text-5xl font-serif italic mb-2 text-white">12+</div>
-                    <div class="text-xs uppercase tracking-widest text-gray-500">Años de Investigación</div>
-                </div>
-                <div class="reveal" style="transition-delay: 100ms;">
-                    <div class="text-4xl md:text-5xl font-serif italic mb-2 text-white">50M+</div>
-                    <div class="text-xs uppercase tracking-widest text-gray-500">Data Points Analizados</div>
-                </div>
-                <div class="reveal" style="transition-delay: 200ms;">
-                    <div class="text-4xl md:text-5xl font-serif italic mb-2 text-white">ROI</div>
-                    <div class="text-xs uppercase tracking-widest text-gray-500">Enfoque Principal</div>
-                </div>
-                <div class="reveal" style="transition-delay: 300ms;">
-                    <div class="text-4xl md:text-5xl font-serif italic mb-2 text-white">PhD</div>
-                    <div class="text-xs uppercase tracking-widest text-gray-500">Nivel del Equipo</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-white text-black relative">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-5xl md:text-6xl font-serif mb-6">Inicie la Conversación</h2>
-                <p class="text-gray-600 text-lg">Solo aceptamos 5 nuevos clientes por trimestre para garantizar la excelencia.</p>
-            </div>
-
-            <form class="space-y-8 reveal">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="relative">
-                        <input type="text" id="name" class="peer w-full border-b border-gray-300 py-4 focus:outline-none focus:border-black transition-colors bg-transparent placeholder-transparent" placeholder="Nombre">
-                        <label for="name" class="absolute left-0 top-4 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black">Nombre Completo</label>
+                <!-- Carbohidratos -->
+                <div class="glass-card p-6 rounded-2xl shadow-sm text-center transform transition duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="wheat" class="w-6 h-6 text-orange-400"></i>
                     </div>
-                    <div class="relative">
-                        <input type="email" id="email" class="peer w-full border-b border-gray-300 py-4 focus:outline-none focus:border-black transition-colors bg-transparent placeholder-transparent" placeholder="Email">
-                        <label for="email" class="absolute left-0 top-4 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black">Correo Corporativo</label>
-                    </div>
+                    <h4 class="font-bold text-gray-700 uppercase tracking-wider text-sm mb-1">H. de Carbono</h4>
+                    <p class="text-3xl font-serif text-orange-600">50%</p>
+                    <p class="text-sm text-gray-500 mt-1">196.01 g | 784.05 Kcal</p>
+                    <p class="text-xs text-orange-400 font-bold">3.12 g/kg peso</p>
                 </div>
-                
-                <div class="relative pt-4">
-                    <input type="text" id="company" class="peer w-full border-b border-gray-300 py-4 focus:outline-none focus:border-black transition-colors bg-transparent placeholder-transparent" placeholder="Empresa">
-                    <label for="company" class="absolute left-0 top-8 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-8 peer-focus:top-2 peer-focus:text-xs peer-focus:text-black">Empresa / Sitio Web</label>
-                </div>
-
-                <div class="relative pt-8">
-                    <textarea id="message" rows="3" class="peer w-full border-b border-gray-300 py-4 focus:outline-none focus:border-black transition-colors bg-transparent placeholder-transparent" placeholder="Mensaje"></textarea>
-                    <label for="message" class="absolute left-0 top-12 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-12 peer-focus:top-6 peer-focus:text-xs peer-focus:text-black">Desafío Actual de Mercado</label>
-                </div>
-
-                <div class="pt-8 text-center">
-                    <button type="button" class="bg-black text-white px-12 py-4 uppercase tracking-widest text-sm hover:bg-cortex-gray transition-colors w-full md:w-auto">
-                        Solicitar Acceso
-                    </button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-cortex-black text-white py-12 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center opacity-50">
-            <div class="flex items-center gap-2 mb-4 md:mb-0">
-                <div class="w-2 h-2 bg-white rounded-full"></div>
-                <span class="text-sm font-mono uppercase tracking-widest">Cortex Agency</span>
             </div>
-            <div class="text-xs font-light">
-                &copy; 2024 CORTEX. Todos los derechos reservados. Ciudad de México - New York - London.
+        </section>
+
+        <!-- Weekly Plan -->
+        <section>
+            <h3 class="font-serif text-2xl text-blush-800 mb-6 flex items-center gap-2">
+                <i data-lucide="calendar-heart" class="w-5 h-5 text-blush-500"></i>
+                Menú Semanal
+            </h3>
+
+            <!-- Tabs Navigation -->
+            <div class="flex overflow-x-auto border-b border-gray-200 mb-8 pb-px no-scrollbar">
+                <button onclick="showDay('lunes')" id="tab-lunes" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Lunes</button>
+                <button onclick="showDay('martes')" id="tab-martes" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Martes</button>
+                <button onclick="showDay('miercoles')" id="tab-miercoles" class="tab-btn tab-active px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Miércoles</button>
+                <button onclick="showDay('jueves')" id="tab-jueves" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Jueves</button>
+                <button onclick="showDay('viernes')" id="tab-viernes" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Viernes</button>
+                <button onclick="showDay('sabado')" id="tab-sabado" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Sábado</button>
+                <button onclick="showDay('domingo')" id="tab-domingo" class="tab-btn tab-inactive px-6 py-3 text-sm font-medium uppercase tracking-wider whitespace-nowrap transition-colors">Domingo</button>
             </div>
+
+            <!-- Content Area for Days -->
+            <div id="meals-container" class="space-y-6">
+                <!-- Rendered via JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-blush-900 text-blush-100 py-10 mt-16 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+            <i data-lucide="flower-2" class="w-8 h-8 mx-auto mb-4 text-blush-300 opacity-80"></i>
+            <p class="font-serif text-xl mb-2">"El cuidado de ti misma comienza desde adentro."</p>
+            <p class="text-sm text-blush-300 opacity-80 mt-4">© 2026 NutriBalance. Por Ingrid Jaqueline Valdez Aguilar.</p>
         </div>
     </footer>
 
     <script>
-        // Icon Initialization
         lucide.createIcons();
 
-        // Scroll Animation Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        const dietData = {
+            lunes: [],
+            martes: [
+                {
+                    tipo: "Desayuno",
+                    platillo: "Omelet de claras con Brócoli y Papa",
+                    preparacion: "Omelet hecho con 3/4 de taza de claras de huevo, mezclado con 1 taza de brócoli picado cocido al vapor.",
+                    alimentos: [
+                        { alimento: "Claras de huevo", cantidad: "3/4 taza" },
+                        { alimento: "Brócoli picado", cantidad: "1 taza" },
+                        { alimento: "Papa cocida en cubos", cantidad: "1/2 pieza" },
+                        { alimento: "Aceite de oliva", cantidad: "1 cdta" },
+                        { alimento: "Uvas", cantidad: "1 taza" },
+                        { alimento: "Leche descremada", cantidad: "1 taza" }
+                    ]
+                },
+                {
+                    tipo: "Colación Matutina",
+                    platillo: "Yogur con Mango",
+                    preparacion: "Mezclar el yogur con el mango. Las palomitas se consumen como snack adicional.",
+                    alimentos: [
+                        { alimento: "Yogur natural descremado", cantidad: "1 taza" },
+                        { alimento: "Mango picado (o 1/2 Manila)", cantidad: "1 taza" },
+                        { alimento: "Palomitas de maíz naturales", cantidad: "3 tazas" }
+                    ]
+                },
+                {
+                    tipo: "Comida",
+                    platillo: "Pollo a la Naranja con Arroz y Leguminosas",
+                    preparacion: "Pechuga asada marinada con jugo de naranja. Acompañar con arroz y frijoles.",
+                    alimentos: [
+                        { alimento: "Pechuga de pollo asada", cantidad: "90g" },
+                        { alimento: "Jugo de naranja (para marinar)", cantidad: "1 pieza" },
+                        { alimento: "Arroz blanco/integral cocido", cantidad: "1/2 taza" },
+                        { alimento: "Frijoles de la olla", cantidad: "1/2 taza" },
+                        { alimento: "Zanahoria rallada", cantidad: "1 taza" },
+                        { alimento: "Aceite (para cocción)", cantidad: "2 cdtas" }
+                    ]
+                },
+                {
+                    tipo: "Colación Vespertina",
+                    platillo: "Rollitos de Jamón y Fruta",
+                    preparacion: "Hacer rollitos con el jamón. Acompañar con bastones de vegetales y aguacate.",
+                    alimentos: [
+                        { alimento: "Jamón de pechuga de pavo", cantidad: "3 rebanadas" },
+                        { alimento: "Zanahoria o jícama (bastones)", cantidad: "1/2 taza" },
+                        { alimento: "Naranja en gajos", cantidad: "1 pieza" },
+                        { alimento: "Aguacate", cantidad: "1/3 pieza" }
+                    ]
+                },
+                {
+                    tipo: "Cena",
+                    platillo: "Molletes Ligeros",
+                    preparacion: "Pan integral con queso panela gratinado y pico de gallo.",
+                    alimentos: [
+                        { alimento: "Pan integral", cantidad: "1 rebanada" },
+                        { alimento: "Queso panela", cantidad: "30g" },
+                        { alimento: "Pico de gallo (o brócoli extra)", cantidad: "Al gusto" },
+                        { alimento: "Aceite o mayonesa ligera", cantidad: "1 cdta" }
+                    ]
                 }
+            ],
+            miercoles: [
+                {
+                    tipo: "Desayuno",
+                    platillo: "Papas con Huevo y Brócoli",
+                    preparacion: "3/4 de taza de claras de huevo revueltas con 1/2 pieza de papa cocida en cubos y 1 taza de brócoli picado al vapor.",
+                    alimentos: [
+                        { alimento: "Claras de huevo", cantidad: "3/4 taza" },
+                        { alimento: "Papa cocida en cubos", cantidad: "1/2 pieza" },
+                        { alimento: "Brócoli picado al vapor", cantidad: "1 taza" },
+                        { alimento: "Aceite de oliva o aguacate", cantidad: "1 cdta" },
+                        { alimento: "Uvas frescas", cantidad: "1 taza" },
+                        { alimento: "Leche descremada", cantidad: "1 taza" }
+                    ]
+                },
+                {
+                    tipo: "Colación Matutina",
+                    platillo: "Refrigerio de Naranja y Queso",
+                    preparacion: "Acompañar la naranja con el queso panela y las galletas integrales.",
+                    alimentos: [
+                        { alimento: "Naranja (gajos o rodajas)", cantidad: "1 pieza" },
+                        { alimento: "Queso panela", cantidad: "30g" },
+                        { alimento: "Galletas habaneras integrales", cantidad: "4 piezas" }
+                    ]
+                },
+                {
+                    tipo: "Comida",
+                    platillo: "Filete de Res con Arroz y Vegetales",
+                    preparacion: "Bistec asado a la plancha con arroz, frijoles y zanahoria al vapor. Acompañar con aguacate.",
+                    alimentos: [
+                        { alimento: "Bistec de res asado", cantidad: "60g" },
+                        { alimento: "Arroz cocido", cantidad: "1 taza" },
+                        { alimento: "Frijoles negros o bayos", cantidad: "1/2 taza" },
+                        { alimento: "Zanahoria cocida al vapor", cantidad: "1/2 taza" },
+                        { alimento: "Aguacate mediano", cantidad: "1/3 pieza" }
+                    ]
+                },
+                {
+                    tipo: "Colación Vespertina",
+                    platillo: "Batido de Mango y Avena",
+                    preparacion: "Puedes licuarlo todo para un smoothie o comerlo como un tazón de fruta.",
+                    alimentos: [
+                        { alimento: "Yogur natural o leche descremada", cantidad: "1 taza" },
+                        { alimento: "Mango picado", cantidad: "1 taza" },
+                        { alimento: "Avena natural en hojuelas", cantidad: "3 cdas" },
+                        { alimento: "Nuez entera o almendras", cantidad: "2-6 piezas" }
+                    ]
+                },
+                {
+                    tipo: "Cena",
+                    platillo: "Ensalada de Pollo y Cítricos",
+                    preparacion: "Mezclar el pollo con la lechuga, pepino y gajos de naranja. Aderezar con aceite y limón.",
+                    alimentos: [
+                        { alimento: "Pechuga de pollo (desmenuzada)", cantidad: "60g" },
+                        { alimento: "Lechuga fresca con pepino", cantidad: "2 tazas" },
+                        { alimento: "Naranja en supremas", cantidad: "1 pieza" },
+                        { alimento: "Aceite de oliva y limón", cantidad: "1 cdta" }
+                    ]
+                }
+            ],
+            jueves: [],
+            viernes: [],
+            sabado: [],
+            domingo: []
+        };
+
+        function showDay(dayKey) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('tab-inactive');
+            });
+            const activeTab = document.getElementById(`tab-${dayKey}`);
+            if (activeTab) {
+                activeTab.classList.add('tab-active');
+                activeTab.classList.remove('tab-inactive');
             }
+
+            const container = document.getElementById('meals-container');
+            container.innerHTML = '';
+
+            const meals = dietData[dayKey];
+            
+            if (!meals || meals.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-20 bg-white rounded-2xl border border-dashed border-gray-200">
+                        <i data-lucide="utensils" class="w-12 h-12 text-gray-200 mx-auto mb-4"></i>
+                        <p class="text-gray-400 font-serif text-lg">Información pendiente para este día</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            meals.forEach(meal => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl shadow-sm border border-blush-100 overflow-hidden mb-6';
+                
+                let rowsHtml = meal.alimentos.map(item => `
+                    <tr class="border-b border-gray-50 last:border-0 hover:bg-blush-50/20">
+                        <td class="py-3 text-gray-700 font-medium">${item.alimento}</td>
+                        <td class="py-3 text-gray-500 text-right w-1/3">${item.cantidad}</td>
+                    </tr>
+                `).join('');
+
+                card.innerHTML = `
+                    <div class="bg-blush-50 px-6 py-4 border-b border-blush-100">
+                        <span class="text-[10px] font-bold text-blush-500 uppercase tracking-widest">${meal.tipo}</span>
+                        <h4 class="font-serif text-xl text-blush-900 mt-1">${meal.platillo}</h4>
+                        ${meal.preparacion ? `<p class="text-xs text-blush-600 mt-2 italic">${meal.preparacion}</p>` : ''}
+                    </div>
+                    <div class="p-6">
+                        <table class="w-full text-sm">
+                            <tbody>${rowsHtml}</tbody>
+                        </table>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
         }
-        window.addEventListener("scroll", reveal);
-        // Trigger once on load
-        reveal();
+
+        // Initialize with Miercoles
+        showDay('miercoles');
     </script>
 </body>
 </html>
