@@ -70,7 +70,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- Navegación Original Restaurada con el Link de Pingüi -->
+    <!-- Navegación -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-rose-custom/10">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="font-bold text-xl text-gray-800 flex items-center gap-2">
@@ -81,7 +81,6 @@
                 <a href="#sobre-mi" class="hover:text-rose-custom transition">Sobre Mí</a>
                 <a href="#servicios" class="hover:text-rose-custom transition">Servicios</a>
                 <a href="#imc" class="hover:text-rose-custom transition">IMC</a>
-                <!-- Link de Pingüi -->
                 <a href="#pingui" class="hover:text-rose-custom transition flex items-center gap-2">Pingüi 🐧</a>
                 <a href="#agendar" class="bg-rose-custom text-white px-6 py-2 rounded-full hover:bg-rose-dark transition shadow-md">Agendar Cita</a>
             </div>
@@ -91,7 +90,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section Restaurada -->
+    <!-- Hero Section -->
     <header class="bg-beige-custom pt-24 pb-24 px-6 lg:px-20 flex flex-col items-center text-center relative overflow-hidden">
         <div class="absolute top-0 right-0 w-80 h-80 bg-rose-custom/10 rounded-full blur-3xl -z-10"></div>
         <div class="absolute bottom-0 left-0 w-80 h-80 bg-sage-custom/10 rounded-full blur-3xl -z-10"></div>
@@ -122,7 +121,7 @@
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
             <div class="w-full md:w-5/12 relative group">
                 <div class="absolute inset-0 bg-sage-custom/20 transform rotate-3 rounded-[3rem] -z-10 group-hover:rotate-6 transition-transform"></div>
-                <img src="ingrid-valdez.jpg" alt="Lic. Ingrid Valdez" class="rounded-[3rem] shadow-2xl w-full object-cover border-8 border-white" onerror="this.src='https://placehold.co/600x800/D69E9E/FFFFFF?text=Subir+ingrid-valdez.jpg'">
+                <img src="Ingrid.png" alt="Lic. Ingrid Valdez" class="rounded-[3rem] shadow-2xl w-full object-cover border-8 border-white" onerror="this.src='https://placehold.co/600x800/D69E9E/FFFFFF?text=Subir+Ingrid.png'">
             </div>
             <div class="w-full md:w-7/12">
                 <h2 class="text-4xl font-extrabold mb-2 text-gray-800 tracking-tight">Hola, soy Ingrid Valdez</h2>
@@ -352,23 +351,22 @@
                             <label class="block text-sm font-bold mb-2">Fecha Deseada *</label>
                             <input type="date" id="fecha" required class="w-full px-5 py-4 rounded-2xl bg-gray-50 border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-rose-custom outline-none transition">
                         </div>
-                    </div>
-
-                    <div class="mb-8">
-                        <label class="block text-sm font-bold mb-2">Horario *</label>
-                        <select id="hora" required class="w-full px-5 py-4 rounded-2xl bg-gray-50 border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-rose-custom outline-none transition cursor-pointer appearance-none">
-                            <option value="">Selecciona una hora</option>
-                            <option value="09:00">09:00 AM</option>
-                            <option value="10:00">10:00 AM</option>
-                            <option value="11:00">11:00 AM</option>
-                            <option value="12:00">12:00 PM</option>
-                            <option value="13:00">01:00 PM</option>
-                            <option value="14:00">02:00 PM</option>
-                            <option value="15:00">03:00 PM</option>
-                            <option value="16:00">04:00 PM</option>
-                            <option value="17:00">05:00 PM</option>
-                        </select>
-                        <p class="text-xs text-gray-500 mt-2 font-semibold"><i class="fas fa-info-circle text-rose-custom"></i> Atención de Lunes a Viernes, citas cada hora en punto.</p>
+                        <div class="mb-8">
+                            <label class="block text-sm font-bold mb-2">Horario *</label>
+                            <select id="hora" required class="w-full px-5 py-4 rounded-2xl bg-gray-50 border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-rose-custom outline-none transition cursor-pointer appearance-none">
+                                <option value="">Selecciona una hora</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                            </select>
+                            <p class="text-xs text-gray-500 mt-2 font-semibold"><i class="fas fa-info-circle text-rose-custom"></i> Atención de Lunes a Viernes, citas cada hora en punto.</p>
+                        </div>
                     </div>
 
                     <button type="submit" id="btnSubmit" class="w-full btn-primary py-5 rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl flex justify-center items-center gap-2 mt-4">
@@ -388,7 +386,7 @@
 
     <!-- LÓGICA DE FUNCIONAMIENTO -->
     <script>
-        // Establecer fecha mínima como hoy para el calendario
+        // Establecer fecha mínima como hoy para el calendario de citas
         const hoy = new Date().toISOString().split('T')[0];
         document.getElementById('fecha').min = hoy;
 
@@ -398,7 +396,6 @@
             const alturaCm = parseFloat(document.getElementById('estatura').value);
             
             if(!peso || !alturaCm || peso <= 0 || alturaCm <= 0) {
-                // Validación visual sencilla
                 const cont = document.getElementById('resultado-imc');
                 cont.innerHTML = `<div class="p-4 bg-red-100 text-red-700 rounded-xl font-bold"><i class="fas fa-exclamation-triangle"></i> Por favor, ingresa tu peso y estatura válidos.</div>`;
                 cont.classList.remove('hidden');
@@ -441,7 +438,7 @@
             }, 10);
         }
 
-        // Lead Magnets
+        // --- MÓDULO LEAD MAGNETS ---
         function abrirLeadMagnet(nombre, path) {
             document.getElementById('nombreRecurso').innerText = nombre;
             document.getElementById('archivoDestino').value = path;
@@ -464,13 +461,28 @@
             e.preventDefault();
             const email = document.getElementById('emailLead').value;
             const path = document.getElementById('archivoDestino').value;
+            const recursoNombre = document.getElementById('nombreRecurso').innerText;
             const btn = document.getElementById('btnLead');
 
             btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparando descarga...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparando...';
+
+            // Webhook exacto que proporcionaste
+            const WEBHOOK_LEADS = 'https://hook.us2.make.com/pmph6z3mibmdnjmzub284thprqikpii7'; 
 
             try {
-                // Descarga local/github
+                // Hacemos la petición a Make de forma segura
+                await fetch(WEBHOOK_LEADS, { 
+                    method: 'POST', 
+                    headers: {'Content-Type': 'application/json'}, 
+                    body: JSON.stringify({ correo: email, recurso: recursoNombre }) 
+                });
+            } catch (err) {
+                console.error("No se pudo conectar con Make, pero el archivo se descargará:", err);
+            }
+
+            try {
+                // Descarga local/github garantizada sin importar Make
                 const link = document.createElement('a');
                 link.href = path;
                 link.download = path.split('/').pop();
@@ -479,50 +491,38 @@
                 document.body.removeChild(link);
 
                 cerrarLeadMagnet();
-                // Custom alert design could go here, fallback to browser for quick notice.
-                // Reemplazado por un mensaje en la UI no bloqueante en una versión de producción ideal,
-                // pero por ahora cerramos el modal para mantener la fluidez.
+                alert("¡Gracias! Tu recurso se está descargando y te enviamos un correo de seguimiento.");
+                document.getElementById('formLead').reset();
             } catch (err) {
-                console.error(err);
+                console.error("Error al descargar:", err);
+                alert("Hubo un error al iniciar la descarga. Por favor intenta de nuevo.");
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fas fa-download"></i> Enviar y Descargar';
             }
         });
 
-        // Formulario Cita (Make.com) - CON VALIDACIÓN ESTRICTA
+        // --- MÓDULO FORMULARIO CITAS ---
         document.getElementById('formCita').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btnSubmit');
             const status = document.getElementById('formStatus');
             
-            // 1. OBTENER VALORES
             const fechaVal = document.getElementById('fecha').value;
             const horaVal = document.getElementById('hora').value;
 
-            // 2. VALIDACIÓN DE FECHA (Lunes a Viernes)
-            // Separamos [YYYY, MM, DD] para evitar problemas de zona horaria al crear el objeto Date
+            // VALIDACIÓN DE FINES DE SEMANA
             const [year, month, day] = fechaVal.split('-');
             const dateObj = new Date(year, month - 1, day);
-            const dayOfWeek = dateObj.getDay(); // 0 es Domingo, 6 es Sábado
+            const dayOfWeek = dateObj.getDay(); 
             
             if (dayOfWeek === 0 || dayOfWeek === 6) {
                 status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-red-100 text-red-700 shadow-inner border border-red-200";
                 status.innerHTML = "<i class='fas fa-exclamation-triangle'></i> La fecha seleccionada cae en fin de semana. Por favor, elige un día de lunes a viernes.";
                 status.classList.remove('hidden');
-                return; // Detiene el envío
+                return; 
             }
 
-            // 3. VALIDACIÓN DE HORARIO (9am a 5pm, en punto)
-            const [hour, minutes] = horaVal.split(':').map(Number);
-            if (hour < 9 || hour > 17 || (hour === 17 && minutes > 0) || minutes !== 0) {
-                status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-red-100 text-red-700 shadow-inner border border-red-200";
-                status.innerHTML = "<i class='fas fa-exclamation-triangle'></i> Horario no válido. Selecciona una hora en punto entre las 09:00 AM y las 05:00 PM (Ejemplo: 10:00, 14:00).";
-                status.classList.remove('hidden');
-                return; // Detiene el envío
-            }
-
-            // 4. PREPARAR DATOS Y ENVIAR AL WEBHOOK
             const data = {
                 cliente: document.getElementById('cliente').value,
                 telefono: document.getElementById('telefono').value,
@@ -550,6 +550,9 @@
                     status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-green-100 text-green-700 shadow-inner border border-green-200";
                     status.innerHTML = "<i class='fas fa-check-circle'></i> ¡Cita solicitada! Revisa tu WhatsApp y correo para la confirmación o reagendamiento.";
                     document.getElementById('formCita').reset();
+                } else if (response.status === 400) {
+                    status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-yellow-100 text-yellow-800 shadow-inner border border-yellow-200";
+                    status.innerHTML = "<i class='fas fa-clock'></i> Ese horario ya está ocupado. Por favor, elige una hora o fecha diferente.";
                 } else {
                     throw new Error();
                 }
