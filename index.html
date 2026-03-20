@@ -229,7 +229,7 @@
                 </span>
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-800">¡Hola! Soy Pingüi 🐧 <br>Tu asistente virtual.</h2>
                 <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Fui entrenado con Inteligencia Artificial para brindarte información inmediata sobre metodologías de la clínica, costos y ayudarte a agendar una cita al instante.
+                    Fui entrenado con Inteligencia Artificial para brindarte información inmediata sobre metodologías de la clínica, nutrición básica y ayudarte a agendar una cita al instante.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-3">
@@ -548,7 +548,7 @@
 
                 if(response.ok) {
                     status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-green-100 text-green-700 shadow-inner border border-green-200";
-                    status.innerHTML = "<i class='fas fa-check-circle'></i> ¡Cita solicitada! Revisa tu WhatsApp y correo para la confirmación o reagendamiento.";
+                    status.innerHTML = "<i class='fas fa-check-circle'></i> ¡Cita solicitada! Revisa tu correo para la confirmación o reagendamiento.";
                     document.getElementById('formCita').reset();
                 } else if (response.status === 400) {
                     status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-yellow-100 text-yellow-800 shadow-inner border border-yellow-200";
