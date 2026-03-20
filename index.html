@@ -473,13 +473,39 @@
             const btn = document.getElementById('btnSubmit');
             const status = document.getElementById('formStatus');
             
-            // Datos recolectados sin "modalidad"
+            // 1. OBTENER VALORES
+            const fechaVal = document.getElementById('fecha').value;
+            const horaVal = document.getElementById('hora').value;
+
+            // 2. VALIDACIÓN DE FECHA (Lunes a Viernes)
+            // Separamos [YYYY, MM, DD] para evitar problemas de zona horaria al crear el objeto Date
+            const [year, month, day] = fechaVal.split('-');
+            const dateObj = new Date(year, month - 1, day);
+            const dayOfWeek = dateObj.getDay(); // 0 es Domingo, 6 es Sábado
+            
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
+                status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-red-100 text-red-700 shadow-inner border border-red-200";
+                status.innerHTML = "<i class='fas fa-exclamation-triangle'></i> La fecha seleccionada cae en fin de semana. Por favor, elige un día de lunes a viernes.";
+                status.classList.remove('hidden');
+                return; // Detiene el envío
+            }
+
+            // 3. VALIDACIÓN DE HORARIO (9am a 5pm, en punto)
+            const [hour, minutes] = horaVal.split(':').map(Number);
+            if (hour < 9 || hour > 17 || (hour === 17 && minutes > 0) || minutes !== 0) {
+                status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-red-100 text-red-700 shadow-inner border border-red-200";
+                status.innerHTML = "<i class='fas fa-exclamation-triangle'></i> Horario no válido. Selecciona una hora en punto entre las 09:00 AM y las 05:00 PM (Ejemplo: 10:00, 14:00).";
+                status.classList.remove('hidden');
+                return; // Detiene el envío
+            }
+
+            // 4. PREPARAR DATOS Y ENVIAR AL WEBHOOK
             const data = {
                 cliente: document.getElementById('cliente').value,
                 telefono: document.getElementById('telefono').value,
                 correo: document.getElementById('correo').value,
-                fecha: document.getElementById('fecha').value,
-                hora: document.getElementById('hora').value
+                fecha: fechaVal,
+                hora: horaVal
             };
 
             const WEBHOOK_URL = 'https://hook.us2.make.com/ssymuabqybclpst2shrl3arvgrwvva7z';
@@ -487,7 +513,7 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Verificando disponibilidad...</span>';
             status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-beige-custom text-gray-500";
-            status.innerText = "Conectando...";
+            status.innerText = "Conectando con el calendario...";
             status.classList.remove('hidden');
 
             try {
@@ -498,15 +524,15 @@
                 });
 
                 if(response.ok) {
-                    status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-green-100 text-green-700";
-                    status.innerText = "¡Cita solicitada! Revisa tu WhatsApp y correo para la confirmación.";
+                    status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-green-100 text-green-700 shadow-inner border border-green-200";
+                    status.innerHTML = "<i class='fas fa-check-circle'></i> ¡Cita solicitada! Revisa tu WhatsApp y correo para la confirmación o reagendamiento.";
                     document.getElementById('formCita').reset();
                 } else {
                     throw new Error();
                 }
             } catch (err) {
-                status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-red-100 text-red-700";
-                status.innerText = "Error al conectar. Por favor, intenta de nuevo más tarde.";
+                status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-red-100 text-red-700 shadow-inner border border-red-200";
+                status.innerHTML = "<i class='fas fa-wifi'></i> Error al conectar. Por favor, intenta de nuevo o habla con Pingüi.";
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fas fa-check-circle"></i> <span>Confirmar Reservación</span>';
