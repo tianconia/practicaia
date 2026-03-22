@@ -72,11 +72,13 @@
 
     <!-- Navegación -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-rose-custom/10">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center relative">
             <div class="font-bold text-xl text-gray-800 flex items-center gap-2">
                 <i class="fas fa-leaf text-rose-custom"></i> 
                 <span class="tracking-tight">Lic. Ingrid Valdez</span>
             </div>
+            
+            <!-- Menú Escritorio -->
             <div class="hidden md:flex gap-8 items-center font-bold text-gray-600">
                 <a href="#sobre-mi" class="hover:text-rose-custom transition">Sobre Mí</a>
                 <a href="#servicios" class="hover:text-rose-custom transition">Servicios</a>
@@ -84,8 +86,21 @@
                 <a href="#pingui" class="hover:text-rose-custom transition flex items-center gap-2">Pingüi 🐧</a>
                 <a href="#agendar" class="bg-rose-custom text-white px-6 py-2 rounded-full hover:bg-rose-dark transition shadow-md">Agendar Cita</a>
             </div>
-            <div class="md:hidden text-2xl text-rose-custom">
-                <i class="fas fa-bars"></i>
+            
+            <!-- Botón Menú Móvil -->
+            <button id="btn-mobile-menu" class="md:hidden text-2xl text-rose-custom focus:outline-none p-2">
+                <i id="icon-mobile-menu" class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Contenedor Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white border-t border-gray-100 shadow-xl">
+            <div class="flex flex-col px-6 py-4 gap-4 font-bold text-gray-600 text-center">
+                <a href="#sobre-mi" class="mobile-link hover:text-rose-custom transition">Sobre Mí</a>
+                <a href="#servicios" class="mobile-link hover:text-rose-custom transition">Servicios</a>
+                <a href="#imc" class="mobile-link hover:text-rose-custom transition">IMC</a>
+                <a href="#pingui" class="mobile-link hover:text-rose-custom transition flex justify-center items-center gap-2">Pingüi 🐧</a>
+                <a href="#agendar" class="mobile-link bg-rose-custom text-white px-6 py-3 rounded-xl hover:bg-rose-dark transition shadow-md inline-block">Agendar Cita</a>
             </div>
         </div>
     </nav>
@@ -229,7 +244,7 @@
                 </span>
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-800">¡Hola! Soy Pingüi 🐧 <br>Tu asistente virtual.</h2>
                 <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Fui entrenado con Inteligencia Artificial para brindarte información inmediata sobre metodologías de la clínica, nutrición básica y ayudarte a agendar una cita al instante.
+                    Fui entrenado con Inteligencia Artificial para brindarte información inmediata sobre metodologías de la clínica, costos y ayudarte a agendar una cita al instante.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-3">
@@ -386,6 +401,29 @@
 
     <!-- LÓGICA DE FUNCIONAMIENTO -->
     <script>
+        // --- Menú Móvil ---
+        const btnMobileMenu = document.getElementById('btn-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconMobileMenu = document.getElementById('icon-mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                iconMobileMenu.classList.remove('fa-times');
+                iconMobileMenu.classList.add('fa-bars');
+            } else {
+                iconMobileMenu.classList.remove('fa-bars');
+                iconMobileMenu.classList.add('fa-times');
+            }
+        }
+
+        btnMobileMenu.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
         // Establecer fecha mínima como hoy para el calendario de citas
         const hoy = new Date().toISOString().split('T')[0];
         document.getElementById('fecha').min = hoy;
@@ -467,11 +505,9 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparando...';
 
-            // Webhook exacto que proporcionaste
             const WEBHOOK_LEADS = 'https://hook.us2.make.com/pmph6z3mibmdnjmzub284thprqikpii7'; 
 
             try {
-                // Hacemos la petición a Make de forma segura
                 await fetch(WEBHOOK_LEADS, { 
                     method: 'POST', 
                     headers: {'Content-Type': 'application/json'}, 
@@ -482,7 +518,6 @@
             }
 
             try {
-                // Descarga local/github garantizada sin importar Make
                 const link = document.createElement('a');
                 link.href = path;
                 link.download = path.split('/').pop();
@@ -511,7 +546,6 @@
             const fechaVal = document.getElementById('fecha').value;
             const horaVal = document.getElementById('hora').value;
 
-            // VALIDACIÓN DE FINES DE SEMANA
             const [year, month, day] = fechaVal.split('-');
             const dateObj = new Date(year, month - 1, day);
             const dayOfWeek = dateObj.getDay(); 
@@ -548,7 +582,7 @@
 
                 if(response.ok) {
                     status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-green-100 text-green-700 shadow-inner border border-green-200";
-                    status.innerHTML = "<i class='fas fa-check-circle'></i> ¡Cita solicitada! Revisa tu correo para la confirmación o reagendamiento.";
+                    status.innerHTML = "<i class='fas fa-check-circle'></i> ¡Cita solicitada! Revisa tu WhatsApp y correo para la confirmación o reagendamiento.";
                     document.getElementById('formCita').reset();
                 } else if (response.status === 400) {
                     status.className = "mt-6 text-center font-bold block p-4 rounded-2xl bg-yellow-100 text-yellow-800 shadow-inner border border-yellow-200";
